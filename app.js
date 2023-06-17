@@ -83,17 +83,17 @@ app.delete('/api/users/:userID', (req, res) => {
 //database connection :
 import mysql from "mysql";
 const mysqlConnection = mysql.createConnection({
-    host: env.DB_HOST,
-    port: env.DB_PORT,
-    user: env.DB_USERNAME,
-    password: env.DB_PASSWORD,
-    database: env.DB_DATABASE,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
 });
 mysqlConnection.connect((err) => {
     if (err) {
         return console.log(`ERROR:${err}`);
     }
-    app.listen(env.SERVER_PORT, () => {
+    app.listen(process.env.SERVER_PORT, () => {
         console.log(`MySQL connected successfully`);
         console.log(`app is listeing on ${SERVER_PORT}`);
     });
