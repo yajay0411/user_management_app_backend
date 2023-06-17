@@ -1,7 +1,7 @@
 import express from "express";
-import env from 'env';
 
 const app = express();
+const port = process.env.SERVER_PORT || 3000
 
 //some middlewares for cross site data transactions
 app.use(express.json({ limit: "30mb", extended: true }));
@@ -93,8 +93,8 @@ mysqlConnection.connect((err) => {
     if (err) {
         return console.log(`ERROR:${err}`);
     }
-    app.listen(process.env.SERVER_PORT, () => {
+    app.listen(port, () => {
         console.log(`MySQL connected successfully`);
-        console.log(`app is listeing on ${SERVER_PORT}`);
+        console.log(`app is listeing on ${port}`);
     });
 })
